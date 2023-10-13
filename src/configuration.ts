@@ -1,16 +1,24 @@
 import { Configuration, App } from '@midwayjs/core';
+import { join } from 'path';
 import * as koa from '@midwayjs/koa';
 import * as validate from '@midwayjs/validate';
 import * as info from '@midwayjs/info';
-import { join } from 'path';
-// import { DefaultErrorFilter } from './filter/default.filter';
+import * as jwt from '@midwayjs/jwt';
+import * as passport from '@midwayjs/passport';
+import * as orm from '@midwayjs/typeorm';
+import { DefaultErrorFilter } from './filter/default.filter';
 // import { NotFoundFilter } from './filter/notfound.filter';
 import { ReportMiddleware } from './middleware/report.middleware';
+import { JwtPassportMiddleware } from './middleware/jwt.middleware';
+import { FormatMiddleware } from './middleware/FormatMiddleware';
 
 @Configuration({
   imports: [
     koa,
     validate,
+    jwt,
+    passport,
+    orm,
     {
       component: info,
       enabledEnvironment: ['local'],
@@ -24,8 +32,12 @@ export class MainConfiguration {
 
   async onReady() {
     // add middleware
-    this.app.useMiddleware([ReportMiddleware]);
+    this.app.useMiddleware([
+      ReportMiddleware,
+      JwtPassportMiddleware,
+      FormatMiddleware,
+    ]);
     // add filter
-    // this.app.useFilter([NotFoundFilter, DefaultErrorFilter]);
+    this.app.useFilter([DefaultErrorFilter]);
   }
 }

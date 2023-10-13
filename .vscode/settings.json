@@ -1,6 +1,9 @@
 {
   "cSpell.words": [
     "midwayjs",
-    "mwts"
-  ]
+    "mwts",
+    "typeorm"
+  ],
+  "editor.formatOnSave": true,
+  "consoleLog.Number Argument": "console.log 接收 2 个参数"
 }
