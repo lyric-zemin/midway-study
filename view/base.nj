@@ -1,0 +1,10 @@
+<head>
+  <link rel="stylesheet" href="/reset.css">
+</head>
+
+<body>
+  {% block content %}
+
+  {% endblock %}
+</body>
+

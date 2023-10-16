@@ -6,6 +6,10 @@ import * as info from '@midwayjs/info';
 import * as jwt from '@midwayjs/jwt';
 import * as passport from '@midwayjs/passport';
 import * as orm from '@midwayjs/typeorm';
+import * as view from '@midwayjs/view-nunjucks';
+import * as captcha from '@midwayjs/captcha';
+import * as staticFile from '@midwayjs/static-file';
+import * as ws from '@midwayjs/ws';
 import { DefaultErrorFilter } from './filter/default.filter';
 // import { NotFoundFilter } from './filter/notfound.filter';
 import { ReportMiddleware } from './middleware/report.middleware';
@@ -19,6 +23,10 @@ import { FormatMiddleware } from './middleware/FormatMiddleware';
     jwt,
     passport,
     orm,
+    view,
+    captcha,
+    staticFile,
+    ws,
     {
       component: info,
       enabledEnvironment: ['local'],

@@ -30,4 +30,17 @@ export default {
       stripUnknown: true,
     },
   },
+  view: {
+    defaultViewEngine: 'nunjucks',
+    mapping: {
+      '.nj': 'nunjucks',
+    },
+  },
+  staticFile: {
+    dirs: {
+      default: {
+        prefix: '/',
+      },
+    },
+  },
 } as MidwayConfig;

@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@midwayjs/bootstrap": "^3.12.0",
+    "@midwayjs/captcha": "3",
     "@midwayjs/core": "^3.12.0",
     "@midwayjs/decorator": "^3.12.0",
     "@midwayjs/info": "^3.12.0",
@@ -12,8 +13,11 @@
     "@midwayjs/koa": "^3.12.0",
     "@midwayjs/logger": "^2.14.0",
     "@midwayjs/passport": "3",
+    "@midwayjs/static-file": "3",
     "@midwayjs/typeorm": "3",
     "@midwayjs/validate": "^3.12.0",
+    "@midwayjs/view-nunjucks": "3",
+    "@midwayjs/ws": "3",
     "passport-jwt": "^4.0.1",
     "sqlite3": "^5.1.6",
     "typeorm": "^0.3.17"
@@ -24,6 +28,7 @@
     "@types/jest": "^29.2.0",
     "@types/koa": "^2.13.4",
     "@types/node": "14",
+    "@types/ws": "^8.5.7",
     "cross-env": "^6.0.0",
     "jest": "^29.2.2",
     "mwts": "^1.3.0",

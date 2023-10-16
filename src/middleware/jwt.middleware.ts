@@ -11,8 +11,7 @@ export class JwtPassportMiddleware extends PassportMiddleware(JwtStrategy) {
     return {};
   }
 
-  ignore(ctx: Context): boolean {
-    // 下面的路由将忽略此中间件
-    return ['/', '/token'].includes(ctx.path);
+  match(ctx: Context) {
+    return ctx.path.indexOf('/api') !== -1;
   }
 }
