@@ -70,7 +70,9 @@ export class APIController {
   @Get('/photo')
   async findPhotos() {
     // find and get count
-    const [list, count] = await this.photoModel.findAndCount();
+    const [list, count] = await this.photoModel.findAndCount({
+      relations: ['metaData', 'author', 'albums'],
+    });
 
     return {
       list,

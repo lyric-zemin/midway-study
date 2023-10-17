@@ -1,5 +1,8 @@
 // src/dto/user.ts
-import { OmitDto, Rule, RuleType } from '@midwayjs/validate';
+import { OmitDto, Rule, RuleType, getSchema } from '@midwayjs/validate';
+import { PhotoMetadataDto, NewPhotoMetadataDto } from './photoMetaData';
+import { AuthorDto, NewAuthorDto } from './author';
+import { AlbumDto, NewAlbumDto } from './album';
 
 export class PhotoDTO {
   @Rule(RuleType.number().required())
@@ -19,6 +22,29 @@ export class PhotoDTO {
 
   @Rule(RuleType.boolean().default(false))
   isPublished: boolean;
+
+  @Rule(getSchema(PhotoMetadataDto).required())
+  metaData: PhotoMetadataDto;
+
+  @Rule(getSchema(AuthorDto).required())
+  author: AuthorDto;
+
+  @Rule(RuleType.array().items(getSchema(AlbumDto)).required())
+  albums: AlbumDto[];
 }
 
-export class NewPhotoDto extends OmitDto(PhotoDTO, ['id']) { }
+export class NewPhotoDto extends OmitDto(PhotoDTO, [
+  'id',
+  'metaData',
+  'author',
+  'albums',
+]) {
+  @Rule(getSchema(NewPhotoMetadataDto).required())
+  metaData: NewPhotoMetadataDto;
+
+  @Rule(getSchema(NewAuthorDto).required())
+  author: NewAuthorDto;
+
+  @Rule(RuleType.array().items(getSchema(NewAlbumDto)).required())
+  albums: NewAlbumDto[];
+}
