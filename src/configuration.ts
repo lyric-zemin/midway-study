@@ -10,6 +10,7 @@ import * as view from '@midwayjs/view-nunjucks';
 import * as captcha from '@midwayjs/captcha';
 import * as staticFile from '@midwayjs/static-file';
 import * as ws from '@midwayjs/ws';
+import * as casbin from '@midwayjs/casbin';
 import { DefaultErrorFilter } from './filter/default.filter';
 // import { NotFoundFilter } from './filter/notfound.filter';
 import { ReportMiddleware } from './middleware/report.middleware';
@@ -27,6 +28,7 @@ import { FormatMiddleware } from './middleware/FormatMiddleware';
     captcha,
     staticFile,
     ws,
+    casbin,
     {
       component: info,
       enabledEnvironment: ['local'],
@@ -47,5 +49,6 @@ export class MainConfiguration {
     ]);
     // add filter
     this.app.useFilter([DefaultErrorFilter]);
+    this.app.useGuard([casbin.AuthGuard]);
   }
 }

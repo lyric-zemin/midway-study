@@ -1,5 +1,6 @@
 import { MidwayConfig } from '@midwayjs/core';
 import path = require('node:path');
+// import { CasbinRule, createAdapter } from '@midwayjs/casbin-typeorm-adapter';
 
 export default {
   // use for cookie sign key, should change to your own and keep security
@@ -23,6 +24,12 @@ export default {
         logging: true,
         entities: ['**/entity/*.entity{.ts,.js}'],
       },
+      // casbin: {
+      //   type: 'sqlite',
+      //   synchronize: true,
+      //   database: path.join(__dirname, '../../test.sqlite'),
+      //   entities: [CasbinRule],
+      // },
     },
   },
   validate: {
@@ -42,5 +49,11 @@ export default {
         prefix: '/',
       },
     },
+  },
+  casbin: {
+    modelPath: path.join(__dirname, '../auth/basic_model.conf'),
+    policyAdapter: path.join(__dirname, '../auth/basic_policy.csv'),
+    // policyAdapter: createAdapter({ dataSourceName: 'casbin' }),
+    usernameFromContext: ctx => 'root', // 超级用户
   },
 } as MidwayConfig;

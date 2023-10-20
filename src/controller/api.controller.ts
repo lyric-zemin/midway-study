@@ -17,6 +17,12 @@ import { InjectEntityModel } from '@midwayjs/typeorm';
 import { Repository } from 'typeorm';
 import { Photo } from '../entity/photo.entity';
 import { PhotoDTO, NewPhotoDto } from '../dto/photo';
+import { Pagination } from '../interface';
+import {
+  AuthActionVerb,
+  AuthPossession,
+  UsePermission,
+} from '@midwayjs/casbin';
 
 @Controller('/api')
 export class APIController {
@@ -68,15 +74,26 @@ export class APIController {
   }
   // 查
   @Get('/photo')
-  async findPhotos() {
+  @UsePermission({
+    resource: 'user',
+    action: AuthActionVerb.READ,
+    possession: AuthPossession.ANY,
+  })
+  async findPhotos(@Query() pagination: Pagination) {
+    const { page = 1, size = 10 } = pagination;
     // find and get count
     const [list, count] = await this.photoModel.findAndCount({
-      relations: ['metaData', 'author', 'albums'],
+      // relations: ['metaData', 'author', 'albums'],
+      order: { updateDate: 'desc' },
+      skip: size * (page - 1),
+      take: size,
     });
 
     return {
       list,
       count,
+      page,
+      size,
     };
   }
 }
