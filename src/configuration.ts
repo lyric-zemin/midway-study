@@ -11,6 +11,8 @@ import * as captcha from '@midwayjs/captcha';
 import * as staticFile from '@midwayjs/static-file';
 import * as ws from '@midwayjs/ws';
 import * as casbin from '@midwayjs/casbin';
+import * as redis from '@midwayjs/redis';
+import * as codeDye from '@midwayjs/code-dye';
 import { DefaultErrorFilter } from './filter/default.filter';
 // import { NotFoundFilter } from './filter/notfound.filter';
 import { ReportMiddleware } from './middleware/report.middleware';
@@ -29,6 +31,11 @@ import { FormatMiddleware } from './middleware/FormatMiddleware';
     staticFile,
     ws,
     casbin,
+    redis,
+    {
+      component: codeDye,
+      enabledEnvironment: ['local'],
+    },
     {
       component: info,
       enabledEnvironment: ['local'],

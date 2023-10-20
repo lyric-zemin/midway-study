@@ -23,6 +23,7 @@ import {
   AuthPossession,
   UsePermission,
 } from '@midwayjs/casbin';
+import { RedisService } from '@midwayjs/redis';
 
 @Controller('/api')
 export class APIController {
@@ -95,5 +96,16 @@ export class APIController {
       page,
       size,
     };
+  }
+
+  @Inject()
+  redisService: RedisService;
+
+  @Get('/redis')
+  async getRedis() {
+    const result = await this.redisService.get('foo');
+    // await this.redisService.set('foo', 'bar2', 'EX', 10);
+
+    return result;
   }
 }

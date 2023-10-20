@@ -56,4 +56,14 @@ export default {
     // policyAdapter: createAdapter({ dataSourceName: 'casbin' }),
     usernameFromContext: ctx => 'root', // 超级用户
   },
+  redis: {
+    client: {
+      port: 6379, // Redis port
+      host: '127.0.0.1', // Redis host
+      db: 0,
+    },
+  },
+  codeDye: {
+    matchQueryKey: 'codeDye',
+  },
 } as MidwayConfig;
