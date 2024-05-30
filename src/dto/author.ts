@@ -8,4 +8,4 @@ export class AuthorDto {
   name: string;
 }
 
-export class NewAuthorDto extends OmitDto(AuthorDto, ['id']) { }
+export class NewAuthorDto extends OmitDto(AuthorDto, ['id']) {}

@@ -8,4 +8,4 @@ export class AlbumDto {
   name: string;
 }
 
-export class NewAlbumDto extends OmitDto(AlbumDto, ['id']) { }
+export class NewAlbumDto extends OmitDto(AlbumDto, ['id']) {}

@@ -20,4 +20,4 @@ export class PhotoMetadataDto {
   comment: string;
 }
 
-export class NewPhotoMetadataDto extends OmitDto(PhotoMetadataDto, ['id']) { }
+export class NewPhotoMetadataDto extends OmitDto(PhotoMetadataDto, ['id']) {}
