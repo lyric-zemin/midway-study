@@ -24,7 +24,9 @@ import {
   UsePermission,
 } from '@midwayjs/casbin';
 import { RedisService } from '@midwayjs/redis';
+import { ApiBearerAuth } from '@midwayjs/swagger';
 
+@ApiBearerAuth()
 @Controller('/api')
 export class APIController {
   @Inject()

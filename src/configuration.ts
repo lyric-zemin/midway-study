@@ -13,6 +13,7 @@ import * as ws from '@midwayjs/ws';
 import * as casbin from '@midwayjs/casbin';
 import * as redis from '@midwayjs/redis';
 import * as codeDye from '@midwayjs/code-dye';
+import * as swagger from '@midwayjs/swagger';
 import { DefaultErrorFilter } from './filter/default.filter';
 // import { NotFoundFilter } from './filter/notfound.filter';
 import { ReportMiddleware } from './middleware/report.middleware';
@@ -32,6 +33,10 @@ import { FormatMiddleware } from './middleware/FormatMiddleware';
     ws,
     casbin,
     redis,
+    {
+      component: swagger,
+      enabledEnvironment: ['local'],
+    },
     {
       component: codeDye,
       enabledEnvironment: ['local'],

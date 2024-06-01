@@ -66,4 +66,9 @@ export default {
   codeDye: {
     matchQueryKey: 'codeDye',
   },
+  swagger: {
+    auth: {
+      authType: 'bearer',
+    },
+  },
 } as MidwayConfig;

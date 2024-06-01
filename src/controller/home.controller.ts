@@ -1,6 +1,7 @@
 import { CaptchaService } from '@midwayjs/captcha';
 import { Controller, Get, Inject, Query } from '@midwayjs/core';
 import { JwtService } from '@midwayjs/jwt';
+import { ApiQuery } from '@midwayjs/swagger';
 import { Context } from 'koa';
 
 @Controller('/')
@@ -15,10 +16,12 @@ export class HomeController {
   captchaService: CaptchaService;
 
   @Get('/')
-  async home(@Query('name') name = 'Midwayjs'): Promise<string> {
+  @ApiQuery({ name: 'name' })
+  async home(@Query('name') name = 'Midwayjs') {
     // return 'Hello Midwayjs!';
     return 'Hello ' + name + '!';
   }
+
   @Get('/token')
   async getToken() {
     return {

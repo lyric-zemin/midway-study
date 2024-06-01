@@ -17,6 +17,7 @@
     "@midwayjs/passport": "3",
     "@midwayjs/redis": "3",
     "@midwayjs/static-file": "3",
+    "@midwayjs/swagger": "3",
     "@midwayjs/typeorm": "3",
     "@midwayjs/validate": "^3.12.0",
     "@midwayjs/view-nunjucks": "3",
