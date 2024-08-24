@@ -1,7 +1,8 @@
 import { CaptchaService } from '@midwayjs/captcha';
 import { Controller, Get, Inject, Query } from '@midwayjs/core';
 import { JwtService } from '@midwayjs/jwt';
-import { ApiQuery } from '@midwayjs/swagger';
+import { RedisService } from '@midwayjs/redis';
+import { ApiOkResponse, ApiOperation, ApiQuery } from '@midwayjs/swagger';
 import { Context } from 'koa';
 
 @Controller('/')
@@ -33,6 +34,19 @@ export class HomeController {
   async render() {
     const captchaInfo = await this.getImageCaptcha();
     await this.ctx.render('login.nj', { captchaInfo });
+  }
+
+  @Inject()
+  redisService: RedisService;
+
+  @Get('/redis')
+  @ApiOperation({ summary: '查询redis' })
+  @ApiOkResponse({ description: '查询redis返回值', type: 'string' })
+  async getRedis() {
+    const result = await this.redisService.get('foo');
+    await this.redisService.set('foo', 'bar2', 'EX', 10);
+
+    return result;
   }
 
   async getImageCaptcha() {

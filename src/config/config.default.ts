@@ -23,6 +23,7 @@ export default {
         synchronize: true,
         logging: true,
         entities: ['**/entity/*.entity{.ts,.js}'],
+        migrations: ['**/migration/*.ts'],
       },
       // casbin: {
       //   type: 'sqlite',
