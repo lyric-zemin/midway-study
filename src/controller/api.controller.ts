@@ -16,7 +16,7 @@ import { UserService } from '../service/user.service';
 import { InjectEntityModel } from '@midwayjs/typeorm';
 import { Repository } from 'typeorm';
 import { Photo } from '../entity/photo.entity';
-import { PhotoDTO, NewPhotoDto } from '../dto/photo';
+import { PhotoDTO, NewPhotoDto } from '../dto/photo.dto';
 import { Pagination } from '../interface';
 import {
   AuthActionVerb,

@@ -1,8 +1,8 @@
 // src/dto/user.ts
 import { OmitDto, Rule, RuleType, getSchema } from '@midwayjs/validate';
-import { PhotoMetadataDto, NewPhotoMetadataDto } from './photoMetaData';
-import { AuthorDto, NewAuthorDto } from './author';
-import { AlbumDto, NewAlbumDto } from './album';
+import { PhotoMetadataDto, NewPhotoMetadataDto } from './photoMetaData.dto';
+import { AuthorDto, NewAuthorDto } from './author.dto';
+import { AlbumDto, NewAlbumDto } from './album.dto';
 
 export class PhotoDTO {
   @Rule(RuleType.number().required())
