@@ -1,6 +1,0 @@
-p, u1, user, read:any
-p, u1, user_roles, read:any
-
-p, u2, user_roles, read:any
-
-p, u3, user_per, read:own

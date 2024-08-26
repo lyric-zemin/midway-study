@@ -3,7 +3,6 @@
 import { Middleware } from '@midwayjs/core';
 import { PassportMiddleware, AuthenticateOptions } from '@midwayjs/passport';
 import { JwtStrategy } from '../strategy/jwt.strategy';
-import { Context } from '@midwayjs/koa';
 
 @Middleware()
 export class JwtPassportMiddleware extends PassportMiddleware(JwtStrategy) {
@@ -11,7 +10,8 @@ export class JwtPassportMiddleware extends PassportMiddleware(JwtStrategy) {
     return {};
   }
 
-  match(ctx: Context) {
-    return ctx.path.indexOf('/api') !== -1;
+  match() {
+    // FIXME: 禁用
+    return false;
   }
 }

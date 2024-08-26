@@ -2,45 +2,19 @@ import { Configuration, App } from '@midwayjs/core';
 import { join } from 'path';
 import * as koa from '@midwayjs/koa';
 import * as validate from '@midwayjs/validate';
-import * as info from '@midwayjs/info';
 import * as jwt from '@midwayjs/jwt';
 import * as passport from '@midwayjs/passport';
 import * as orm from '@midwayjs/typeorm';
-import * as view from '@midwayjs/view-nunjucks';
-import * as captcha from '@midwayjs/captcha';
-import * as staticFile from '@midwayjs/static-file';
-import * as ws from '@midwayjs/ws';
-import * as casbin from '@midwayjs/casbin';
-import * as redis from '@midwayjs/redis';
-import * as codeDye from '@midwayjs/code-dye';
-import { DefaultErrorFilter } from './filter/default.filter';
-// import { NotFoundFilter } from './filter/notfound.filter';
+
 import { ReportMiddleware } from './middleware/report.middleware';
 import { JwtPassportMiddleware } from './middleware/jwt.middleware';
-import { FormatMiddleware } from './middleware/FormatMiddleware';
+import { FormatMiddleware } from './middleware/format.middleware';
+
+import { DefaultErrorFilter } from './filter/default.filter';
+import { ValidateErrorFilter } from './filter/validate.filter';
 
 @Configuration({
-  imports: [
-    koa,
-    validate,
-    jwt,
-    passport,
-    orm,
-    view,
-    captcha,
-    staticFile,
-    ws,
-    casbin,
-    redis,
-    {
-      component: codeDye,
-      enabledEnvironment: ['local'],
-    },
-    {
-      component: info,
-      enabledEnvironment: ['local'],
-    },
-  ],
+  imports: [koa, validate, jwt, passport, orm],
   importConfigs: [join(__dirname, './config')],
 })
 export class MainConfiguration {
@@ -54,8 +28,8 @@ export class MainConfiguration {
       JwtPassportMiddleware,
       FormatMiddleware,
     ]);
+
     // add filter
-    this.app.useFilter([DefaultErrorFilter]);
-    this.app.useGuard([casbin.AuthGuard]);
+    this.app.useFilter([DefaultErrorFilter, ValidateErrorFilter]);
   }
 }

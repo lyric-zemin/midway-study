@@ -21,7 +21,7 @@ export class ReportMiddleware implements IMiddleware<Context, NextFunction> {
     };
   }
 
-  static getName(): string {
+  static getName() {
     return 'report';
   }
 }
