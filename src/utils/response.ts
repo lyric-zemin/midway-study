@@ -1,4 +1,4 @@
-export function resSuccess<T>(data: T, message = 'success') {
+export function resSuccess<T>(data: T = null, message = 'success') {
   return {
     code: 0,
     message,

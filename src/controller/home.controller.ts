@@ -1,20 +1,16 @@
 import { Controller, Get, Inject, Query } from '@midwayjs/core';
 import { JwtService } from '@midwayjs/jwt';
-import { Context } from 'koa';
 
 @Controller('/')
 export class HomeController {
   @Inject()
   jwt: JwtService;
 
-  @Inject()
-  ctx: Context;
-
   @Get('/')
   async home(@Query('name') name = 'Midwayjs'): Promise<string> {
-    // return 'Hello Midwayjs!';
     return 'Hello ' + name + '!';
   }
+
   @Get('/token')
   async getToken() {
     return {

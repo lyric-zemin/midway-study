@@ -9,11 +9,12 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   @Config('jwt')
   jwtConfig;
 
+  // 策略的验证
   async validate(payload) {
-    return payload;
+    return payload.user;
   }
 
-  getStrategyOptions(): any {
+  getStrategyOptions() {
     return {
       secretOrKey: this.jwtConfig.secret,
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),

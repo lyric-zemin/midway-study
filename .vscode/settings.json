@@ -4,6 +4,7 @@
     "midwayjs",
     "mwts",
     "stylesheet",
+    "tsbuildinfo",
     "typeorm"
   ],
   "editor.formatOnSave": false,

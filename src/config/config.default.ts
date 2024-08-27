@@ -1,5 +1,4 @@
 import { MidwayConfig } from '@midwayjs/core';
-import path = require('node:path');
 
 export default {
   koa: {
@@ -26,10 +25,16 @@ export default {
   typeorm: {
     dataSource: {
       default: {
-        type: 'sqlite',
-        database: path.join(__dirname, '../../test.sqlite'),
+        type: 'mysql',
+        username: 'root',
+        password: 'ly123',
+        database: 'midway',
+        host: '127.0.0.1',
+        port: 3306,
         synchronize: true,
+        // dropSchema: true,
         logging: true,
+        timezone: '+08:00',
         entities: ['**/entity/*.entity{.ts,.js}'],
       },
     },
