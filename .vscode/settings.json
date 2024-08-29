@@ -3,6 +3,7 @@
     "casbin",
     "midwayjs",
     "mwts",
+    "mwtypeorm",
     "stylesheet",
     "tsbuildinfo",
     "typeorm"

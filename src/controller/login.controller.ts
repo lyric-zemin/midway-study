@@ -17,7 +17,7 @@ export class LoginController {
   @Inject()
   ctx: Context;
 
-  @Post()
+  @Post('/in')
   async login(@Body() user: UserDto) {
     const userObj = await this.userModel.findOne({
       where: {

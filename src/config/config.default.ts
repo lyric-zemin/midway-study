@@ -8,6 +8,8 @@ export default {
     globalPrefix: 'api',
   },
 
+  midwayLogger: {},
+
   validate: {
     validationOptions: {
       stripUnknown: true,
@@ -31,11 +33,12 @@ export default {
         database: 'midway',
         host: '127.0.0.1',
         port: 3306,
-        synchronize: true,
+        // synchronize: true,
         // dropSchema: true,
         logging: true,
         timezone: '+08:00',
         entities: ['**/entity/*.entity{.ts,.js}'],
+        migrations: ['**/migration/*.ts'],
       },
     },
   },

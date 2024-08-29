@@ -1,9 +1,30 @@
-// src/middleware/jwt.middleware.ts
-
-import { Middleware } from '@midwayjs/core';
-import { PassportMiddleware, AuthenticateOptions } from '@midwayjs/passport';
-import { JwtStrategy } from '../strategy/jwt.strategy';
+import {
+  CustomStrategy,
+  PassportStrategy,
+  PassportMiddleware,
+  AuthenticateOptions,
+} from '@midwayjs/passport';
+import { Strategy, ExtractJwt } from 'passport-jwt';
+import { Middleware, Config } from '@midwayjs/core';
 import { Context } from '@midwayjs/koa';
+
+@CustomStrategy()
+export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
+  @Config('jwt')
+  jwtConfig;
+
+  // 策略的验证
+  async validate(payload) {
+    return payload.user;
+  }
+
+  getStrategyOptions() {
+    return {
+      secretOrKey: this.jwtConfig.secret,
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+    };
+  }
+}
 
 @Middleware()
 export class JwtPassportMiddleware extends PassportMiddleware(JwtStrategy) {
