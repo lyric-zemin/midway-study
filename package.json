@@ -42,7 +42,9 @@
     "lint": "mwts check",
     "lint:fix": "mwts fix",
     "build": "midway-bin build -c",
-    "migration:run": "mwtypeorm migration:run -d ./src/config/config.default.ts"
+    "migration:run": "mwtypeorm migration:run -d ./src/config/config.default.ts",
+    "migration:revert": "mwtypeorm migration:revert -d ./src/config/config.default.ts",
+    "migration:generate": "mwtypeorm migration:generate -d ./src/config/config.default.ts src/migration/migration"
   },
   "midway-bin-clean": [
     ".vscode/.tsbuildinfo",

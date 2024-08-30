@@ -1,5 +1,5 @@
-import { BaseEntity } from '@cool-midway/core';
 import { Column, Entity, Index } from 'typeorm';
+import { BaseEntity } from './base.entity';
 
 /**
  * 数据实体

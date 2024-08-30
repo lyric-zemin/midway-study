@@ -12,7 +12,7 @@ export class DefaultErrorFilter
   async catch(err: MidwayHttpError, ctx: Context) {
     const status = err.status ?? DEFAULT_ERR_CODE;
     ctx.logger.error(err);
-    ctx.status = status;
+    ctx.status = status < 600 ? status : DEFAULT_ERR_CODE;
 
     return resError(status, err.message);
   }
