@@ -28,10 +28,10 @@ export default {
     dataSource: {
       default: {
         type: 'mysql',
-        username: 'root',
+        username: 'lyc',
         password: 'ly123',
         database: 'midway',
-        host: '127.0.0.1',
+        host: '192.168.0.20',
         port: 3306,
         // synchronize: true,
         // dropSchema: true,
