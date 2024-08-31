@@ -8,7 +8,16 @@ export default {
     globalPrefix: 'api',
   },
 
-  midwayLogger: {},
+  midwayLogger: {
+    default: {
+      level: 'debug',
+      transports: {
+        file: {
+          level: 'info',
+        },
+      },
+    },
+  },
 
   validate: {
     validationOptions: {
