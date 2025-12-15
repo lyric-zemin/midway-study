@@ -6,6 +6,7 @@ import * as jwt from '@midwayjs/jwt';
 import * as passport from '@midwayjs/passport';
 import * as orm from '@midwayjs/typeorm';
 import * as cool from '@cool-midway/core';
+import * as grpc from '@midwayjs/grpc';
 
 import { ReportMiddleware } from './middleware/report.middleware';
 import { JwtPassportMiddleware } from './middleware/jwt.middleware';
@@ -15,7 +16,7 @@ import { DefaultErrorFilter } from './filter/default.filter';
 import { ValidateErrorFilter } from './filter/validate.filter';
 
 @Configuration({
-  imports: [koa, validate, jwt, passport, orm, cool],
+  imports: [koa, validate, jwt, passport, orm, cool, grpc],
   importConfigs: [join(__dirname, './config')],
 })
 export class MainConfiguration {

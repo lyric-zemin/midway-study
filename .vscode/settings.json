@@ -6,11 +6,11 @@
     "mwtypeorm",
     "stylesheet",
     "tsbuildinfo",
+    "tsproto",
     "typeorm"
   ],
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "consoleLog.Number Argument": "console.log 接收 2 个参数"
 }

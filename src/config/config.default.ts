@@ -40,7 +40,7 @@ export default {
         username: 'lyc',
         password: 'ly123',
         database: 'midway',
-        host: '192.168.0.20',
+        host: '192.168.0.57',
         port: 3306,
         // synchronize: true,
         // dropSchema: true,
@@ -50,5 +50,24 @@ export default {
         migrations: ['**/migration/*.ts'],
       },
     },
+  },
+
+  grpcServer: {
+    services: [
+      {
+        protoPath: './proto/helloworld.proto',
+        package: 'helloworld',
+      },
+    ],
+  },
+
+  grpc: {
+    services: [
+      {
+        url: 'localhost:6565',
+        protoPath: './proto/helloworld.proto',
+        package: 'helloworld',
+      },
+    ],
   },
 } as MidwayConfig;

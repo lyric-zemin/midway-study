@@ -10,5 +10,6 @@ RUN npm install --registry=https://registry.npmmirror.com
 RUN npm run build
 
 EXPOSE 7001
+EXPOSE 6565
 
 CMD ["npm", "start"]
